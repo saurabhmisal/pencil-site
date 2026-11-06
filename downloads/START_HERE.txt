@@ -1,0 +1,55 @@
+PENCIL 0.6 — LOCAL EDITION
+
+GET STARTED
+1. Extract this ZIP into a folder you intend to keep.
+2. Open Pencil.html in a desktop browser. Do not run it inside a ZIP preview.
+3. Click "Start your workspace". No account or API key is needed.
+4. In Conversation, choose "Capture a note", type a note and send it.
+5. Wait for "Saved on this device" before closing Pencil.
+
+WHAT YOU CAN USE
+- Conversation: capture notes or search saved source passages in the current project.
+- Projects and Knowledge: group work, inspect original sources and versions,
+  add corrections, and keep your own annotations.
+- Inbox and Tasks: turn captured notes into tasks, set their details, complete,
+  undo, archive or restore them.
+- Today, Focus and Calendar: pick priorities and plan focused work locally.
+  Calendar export creates private Busy events in an ICS file for manual import.
+- Working document: edit and download a Markdown document for each project.
+- Daily journal: review recorded activity and open tasks.
+- Settings: switch theme, back up, restore, export Markdown or download diagnostics.
+
+KEEP YOUR WORK
+Your data lives in this browser's profile on this device. It is NOT written
+inside Pencil.html and is not synced to another device. Reopen the same file
+in the same browser and profile. Avoid private/incognito mode.
+
+In Settings, click "Download backup" regularly. Keep the resulting JSON
+somewhere safe. Before moving the HTML file, updating Pencil, changing
+browsers, or clearing browser data, download a backup. Use "Choose backup"
+in Settings, review its project/note counts, then confirm replacement to
+restore it. Restore replaces the current workspace; back it up first.
+
+Try saving a note, reopening Pencil, and backing up/restoring a small test
+workspace before using it for important work. If browser storage is blocked,
+Pencil shows a recovery screen. Try a browser/profile that permits local-file
+IndexedDB storage; do not clear a profile containing work without a backup.
+
+Backups and exports are unencrypted. Keep them private. The JSON backup
+limit is 64 MiB; available browser storage may be lower. Source notes can
+contain up to 60,000 characters. Original source versions are preserved,
+while compiled knowledge pages retain their latest 30 historical revisions.
+
+If "Save needs attention" appears, download your changes before reloading.
+Avoid editing the same workspace in multiple tabs.
+
+THIS EDITION'S LIMITS
+This is an offline browser app, not a signed native installer. It has no
+AI-generated answers, automatic decision extraction, cloud sync, live
+calendar connection or external-account integration. Existing imported
+decisions remain available. No model, Gemini, OpenAI or Zep credentials are
+needed. The app's code, styles and font are included in Pencil.html.
+
+Automated checks passed for the packaged source. Interactive browser and
+cross-browser checks could not be completed in the build environment.
+Please keep backups while using this early local release.
