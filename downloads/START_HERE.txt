@@ -53,3 +53,7 @@ needed. The app's code, styles and font are included in Pencil.html.
 Automated checks passed for the packaged source. Interactive browser and
 cross-browser checks could not be completed in the build environment.
 Please keep backups while using this early local release.
+
+PENCIL 0.7
+Try Demo on the welcome screen, or use the Demo switch in the top bar. Sample content is isolated from your personal workspace. Return by turning Demo off.
+Use the three project starters to prepare an editable source brief, review explicit Action/Todo/Task lines, and review observed source changes. Every save is previewed first. These actions collect original evidence locally and do not generate AI interpretations.
