@@ -1,0 +1,3 @@
+/* Hosted workspace brand only; the downloaded offline edition remains local. */
+:root { --background:#f4f5f0; --foreground:#181b19; --primary:#2e7d63; --primary-foreground:#f4f5f0; --secondary:#e5ebe5; --accent:#dce9df; --muted:#5a695e; --border:#c6d1c7; --sidebar:#e9eee8; --green:#2e7d63; }
+:root.dark { --background:#181b19; --foreground:#f4f5f0; --primary:#89d0b2; --primary-foreground:#181b19; --secondary:#202823; --accent:#2b3b30; --muted:#aeb7ae; --border:#3c443d; --sidebar:#202823; --green:#89d0b2; }
