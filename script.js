@@ -1,19 +1,19 @@
 const memories = {
   decision: {
     title: 'A smaller launch makes room to learn.',
-    text: 'The team chose a pilot before a wider release to understand where first-time users get stuck. The goal was to learn from onboarding before expanding access.',
+    text: 'Start with a pilot. Learn where new users get stuck before widening the release.',
     source: 'Planning notes',
     quote: '“Start with a small pilot. Watch the first session, fix the rough edges, then decide when to open access.”'
   },
   changed: {
     title: 'The first session became the priority.',
-    text: 'The initial plan focused on adding more features. Research in this fictional project shifted the emphasis to helping people complete their first useful task, so the team narrowed the pilot.',
+    text: 'Research shifted the goal from more features to a clearer first task. The team narrowed the pilot.',
     source: 'Research summary',
     quote: '“Participants could find the features, but were unsure where to begin. Prioritize a clear first task before adding more options.”'
   },
   next: {
     title: 'The wider release is still an open decision.',
-    text: 'The pilot comes first. Before expanding access, the team needs to review onboarding observations and agree which rough edges to fix. The checklist does not set a wider release date.',
+    text: 'Review the pilot and agree the onboarding fixes. The wider release has no date yet.',
     source: 'Launch checklist',
     quote: '“Next: review pilot sessions, agree the onboarding fixes, and revisit the wider release. Release date: undecided.”'
   }
