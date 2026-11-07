@@ -1,3 +1,7 @@
-/* Hosted workspace brand only; the downloaded offline edition remains local. */
-:root { --background:#f4f5f0; --foreground:#181b19; --primary:#2e7d63; --primary-foreground:#f4f5f0; --secondary:#e5ebe5; --accent:#dce9df; --muted:#5a695e; --border:#c6d1c7; --sidebar:#e9eee8; --green:#2e7d63; }
-:root.dark { --background:#181b19; --foreground:#f4f5f0; --primary:#89d0b2; --primary-foreground:#181b19; --secondary:#202823; --accent:#2b3b30; --muted:#aeb7ae; --border:#3c443d; --sidebar:#202823; --green:#89d0b2; }
+/* Pencil hosted workspace: quiet ivory canvas, navy reading text, green actions. */
+:root { --background:#f7f5ee; --foreground:#172b4d; --primary:#267057; --primary-foreground:#fffef9; --secondary:#e9efea; --accent:#e0ece5; --muted:#526171; --border:#cbd2ce; --sidebar:#efeee7; --green:#267057; }
+:root.dark { --background:#17201f; --foreground:#f7f5ee; --primary:#9bd7b5; --primary-foreground:#17201f; --secondary:#202d2a; --accent:#2b4036; --muted:#bdc9c2; --border:#52665b; --sidebar:#202d2a; --green:#9bd7b5; }
+body #root { font:16px/1.6 var(--brand-font); }
+body #root .text-xs { font-size:13px; line-height:1.5; }
+body #root .text-sm { font-size:15px; line-height:1.6; }
+body #root :is(input,textarea,select) { font-size:16px; }
