@@ -1,0 +1,10 @@
+{
+  "product": "pencil",
+  "version": "0.8.2",
+  "buildNumber": 5,
+  "platform": "mac-arm64",
+  "sourceCommit": "7b48df75c46fb32b9d999431ad4547d62234db13",
+  "sha256": "f56a868a8e509c607c2e05a8349278437ebb5ead8bfd26b1f313d8bff8b08ffb",
+  "download": "https://accounts.lazo.tools/signup?product=pencil",
+  "developerIDSigned": false
+}
