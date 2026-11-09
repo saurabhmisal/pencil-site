@@ -1,21 +1,30 @@
 # Pencil by Lazo
 
-Public landing page and browser distribution for https://pencil.lazo.tools.
+Public website and browser demo for [pencil.lazo.tools](https://pencil.lazo.tools). The sole actively deployed static site is the Render service `pencil-lazo`, published from this repository's `main` branch.
 
-- Website: https://pencil.lazo.tools/
-- Working app: https://pencil.lazo.tools/app/
-- Offline download: https://pencil.lazo.tools/downloads/Pencil_Local_Edition.zip
-- Getting started: https://pencil.lazo.tools/downloads/START_HERE.txt
+## Product access
 
-Render publishes the static root of `main` through the `pencil-lazo` static site. The custom hostname is `pencil.lazo.tools`, whose CNAME points to `pencil-lazo.onrender.com`. Render manages HTTPS.
+- [Website](https://pencil.lazo.tools/)
+- [Browser demo and local workspace](https://pencil.lazo.tools/app/?demo=1)
+- [Verified signup and private Mac downloads](https://accounts.lazo.tools/signup?product=pencil)
+- [Download instructions](https://pencil.lazo.tools/downloads/START_HERE.txt)
 
-The landing illustration uses fictional sources and fixed answers. The app is Pencil 0.6 Local Edition: notes, projects, source search and versions, tasks, documents, focus planning, manual calendar export and JSON backup/restore. No account or API key is required. It has no AI generation or cloud sync. The hosted app and downloaded HTML use separate browser storage. Back up before changing browsers, clearing data or moving the downloaded app.
+**Native Pencil installers are not publicly served from this repository.** Signup, email verification, product entitlements and access-controlled binary delivery are handled by the separate private `saurabhmisal/lazo-access` service. Do not restore or publish the historical `downloads/Pencil_Local_Edition.zip` in this public static repository: that would bypass the intended private-download flow. The browser demo is not a substitute for the current Mac build.
 
-The full application source, build toolchain and tests are retained in the private `saurabhmisal/pencil-workspace` repository. This public repository contains the generated browser app and offline distribution, with third-party notices included. Do not publish source archives, private source, credentials or workspace data here.
+The latest landing copy identifies Pencil for Mac 0.8.2 (Build 5). Release identities and actual availability must be checked against the separate access service, not inferred from this public website or the current Pencil source `package.json`. A signed/notarized installation is **not** claimed merely because a release is downloadable; the release channel and installation limitations must be shown on the protected account page.
 
-To update the app, run the private source repository's checks and `node scripts/prepare-web.mjs`. Copy the generated `site/app/` and `site/downloads/` directories here, review the diff, and push `main`. No application build is required on the host. Render uses build command `true`, publish directory `./`, and `SKIP_INSTALL_DEPS=true`. Pushes to `main` deploy automatically. GitHub Pages publishing is disabled after repeated service-side deployment stalls.
+## Development and deployment
 
+Private desktop application source, tests and migration work are maintained in `saurabhmisal/pencil-workspace`. This public repository contains only static website code, a separately generated browser app/demo and its third-party notices. Never commit customer notes, credentials, installers, private source archives or production environment files here.
 
-## Lazo design standard
+Render automatically deploys the root of `main` (build command `true`, publish directory `./`). The earlier GitHub Pages workflow is obsolete and intentionally removed. `pencil-lazo-tools` is a historical mirror, not the current deployment source.
 
-Follow [the shared design principles](docs/DESIGN_PRINCIPLES.md) for palette, Source Sans 3 typography, responsive layout, character identity and accessible motion. The Lazo website owns the shared style source and exports it with `npm run build:family`.
+Before shipping new app assets, run private Pencil source tests, generate and review the browser-only distribution, verify demo/personal-storage isolation and legal notices, and compare the Render live deployment commit to the reviewed public commit. Do not deploy native binaries through Render static hosting.
+
+## Product boundaries
+
+Pencil is Lazo's one local-first agent harness. Power Chords is an independent agent/skill collection. WEAVOR and standalone Everyday are legacy code sources for data-safe migration and do not represent separate future harnesses.
+
+The browser edition operates in the browser profile and does not inherit native Pencil's Keychain access, provider credentials, secure local workers, or external connectors. Browser workspace exports are plaintext unless independently encrypted. The Mac application requires separate release verification and may have different capabilities from the browser demo.
+
+Follow [the shared design principles](docs/DESIGN_PRINCIPLES.md) for the restrained ivory, navy and green visual identity.
