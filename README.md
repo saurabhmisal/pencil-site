@@ -1,6 +1,15 @@
 # Pencil by Lazo
 
-Public website and browser demo for [pencil.lazo.tools](https://pencil.lazo.tools). The sole actively deployed static site is the Render service `pencil-lazo`, published from this repository's `main` branch.
+**A local-first workspace for knowledge, decisions and focused work.**
+
+Pencil is being built to make it easier to keep notes, projects, supporting evidence and decisions connected instead of scattered across disconnected tools. The current public site introduces the product and offers a browser demo; access to Mac desktop builds uses a separate verified signup flow.
+
+The longer-term direction is a source-linked, permission-aware agent harness. Features under development should not be confused with those available in the current desktop preview.
+
+- [Explore Pencil](https://pencil.lazo.tools/)
+- [See the browser demo](https://pencil.lazo.tools/app/?demo=1)
+- [Explore Lazo](https://lazo.tools/)
+- [See Power Chords, the separate agent-capability project](https://github.com/saurabhmisal/power-chords)
 
 ## Product access
 
