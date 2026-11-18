@@ -28,7 +28,7 @@ The website necessarily serves its HTML, CSS and browser JavaScript to visitors.
 - [x] Browser demo, assets, legal notices and download instructions included.
 - [x] Protected download URL retained.
 - [x] Preview and production deployment logs confirm success.
-- [ ] Custom-domain certificate and DNS cutover verified.
+- [ ] Custom-domain certificate and DNS cutover verified. Firebase certificate processing is the remaining gate; do not cut over while certificate hostname verification fails.
 
 ## Validation
 
@@ -36,7 +36,7 @@ All 30 preview files and all 30 production files matched local bytes. Local HTML
 
 ## DNS preparation
 
-Firebase initially reported `DNS_CNAME_LIVE_MIGRATION`: an existing CNAME prevents advance ownership verification. The Render load-balancer address `216.24.57.1` was verified with valid HTTPS and an exact landing-page byte match before temporarily replacing the Pencil CNAME with that A record (TTL 60 seconds). Only Pencil-related DNS records were changed. A TXT record at `pencil.lazo.tools` with `hosting-site=lazo-pencil-site` and Firebase's DNS ACME challenge under `_acme-challenge.pencil.lazo.tools` were added. The hostname continued returning HTTP 200 through Render during preparation. Firebase must finish certificate validation before the final A-record cutover.
+Firebase initially reported `DNS_CNAME_LIVE_MIGRATION`: an existing CNAME prevents advance ownership verification. The Render load-balancer address `216.24.57.1` was verified with valid HTTPS and an exact landing-page byte match before temporarily replacing the Pencil CNAME with that A record (TTL 60 seconds). Only Pencil-related DNS records were changed. A TXT record at `pencil.lazo.tools` with `hosting-site=lazo-pencil-site` and Firebase's DNS ACME challenge under `_acme-challenge.pencil.lazo.tools` were added. The hostname continued returning HTTP 200 through Render during preparation. The HTTP challenge file was also published on the existing host (Render deploy `dep-dbul3ocipgvc7398qq40`, commit `f07d0ba368ceba211d1fe054c1ab8405b46101ac`); HTTP 200 and exact challenge contents were verified. Firebase detected both DNS and HTTP challenges, cleared the ACME errors and began certificate processing. Firebase must finish certificate validation before the final A-record cutover to the provider-supplied `199.36.158.100`.
 
 ## Next actions and operating runbook
 
@@ -49,6 +49,10 @@ Firebase initially reported `DNS_CNAME_LIVE_MIGRATION`: an existing CNAME preven
 ## Rollback
 
 Before cutover, the prior DNS record is `pencil` CNAME `pencil-lazo.onrender.com`, TTL 60 seconds. The existing Render static service `srv-dbmvss3ncjis73alktvg` is retained. If custom-domain HTTPS or content fails, remove the Pencil ownership TXT if necessary to restore that exact CNAME (CNAME cannot coexist with a TXT at the same hostname), then verify HTTPS from the original provider. Do not delete or alter other Lazo DNS records. For a later website-only regression, use the Firebase Hosting release history to roll back to a previously verified version; confirm the live file hashes afterward.
+
+## Latest external gate
+
+At 2026-11-18 07:23 UTC, Firebase reported the preparation step as `PROCESSING`, certificate `CERT_VALIDATING`, and final traffic switch as `INCOMPLETE`. Both ACME challenges were detected with no remaining ACME issue. A direct HTTPS check against the provider-supplied Firebase IP still failed hostname verification, so traffic was intentionally kept on the working Render route. No customer needs to approve a security warning or change anything on their device for this hosting migration.
 
 ## References
 
