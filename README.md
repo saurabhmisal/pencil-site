@@ -1,6 +1,6 @@
 # Pencil by Lazo
 
-Public website and browser demo for [pencil.lazo.tools](https://pencil.lazo.tools). The sole actively deployed static site is the Render service `pencil-lazo`, published from this repository's `main` branch.
+Public website and browser demo for [pencil.lazo.tools](https://pencil.lazo.tools). Firebase Hosting is the deployment destination, in the dedicated `lazo-pencil-site` project. The prior Render service `pencil-lazo` is retained as a migration fallback. See [the migration record](docs/FIREBASE_HOSTING.md) for the current custom-domain status.
 
 ## Product access
 
@@ -11,15 +11,17 @@ Public website and browser demo for [pencil.lazo.tools](https://pencil.lazo.tool
 
 **Native Pencil installers are not publicly served from this repository.** Signup, email verification, product entitlements and access-controlled binary delivery are handled by the separate private `saurabhmisal/lazo-access` service. Do not restore or publish the historical `downloads/Pencil_Local_Edition.zip` in this public static repository: that would bypass the intended private-download flow. The browser demo is not a substitute for the current Mac build.
 
-The latest landing copy identifies Pencil for Mac 0.8.2 (Build 5). Release identities and actual availability must be checked against the separate access service, not inferred from this public website or the current Pencil source `package.json`. A signed/notarized installation is **not** claimed merely because a release is downloadable; the release channel and installation limitations must be shown on the protected account page.
+The latest landing copy identifies Pencil for Mac 0.8.2 (Build 6). Release identities and actual availability must be checked against the separate access service, not inferred from this public website or the current Pencil source `package.json`. A signed/notarized installation is **not** claimed merely because a release is downloadable; the release channel and installation limitations must be shown on the protected account page.
 
 ## Development and deployment
 
 Private desktop application source, tests and migration work are maintained in `saurabhmisal/pencil-workspace`. This public repository contains only static website code, a separately generated browser app/demo and its third-party notices. Never commit customer notes, credentials, installers, private source archives or production environment files here.
 
-Render automatically deploys the root of `main` (build command `true`, publish directory `./`). The earlier GitHub Pages workflow is obsolete and intentionally removed. `pencil-lazo-tools` is a historical mirror, not the current deployment source.
+Deploy from this checkout using `npx --yes firebase-tools@15.36.0 deploy --only hosting --project lazo-pencil-site`. The predeploy step runs `python3 scripts/prepare-hosting.py` to copy an explicit allowlist of static assets into ignored `.firebase-dist/`; repository configuration, documentation, private sources and native installers are excluded. Firebase billing is disabled. Do not enable paid services for this website.
 
-Before shipping new app assets, run private Pencil source tests, generate and review the browser-only distribution, verify demo/personal-storage isolation and legal notices, and compare the Render live deployment commit to the reviewed public commit. Do not deploy native binaries through Render static hosting.
+The earlier GitHub Pages workflow is obsolete and intentionally removed. `pencil-lazo-tools` is a historical mirror, not the current deployment source. Render remains available for rollback until the custom domain is confirmed on Firebase.
+
+Before shipping new app assets, run private Pencil source tests, generate and review the browser-only distribution, verify demo/personal-storage isolation and legal notices, and compare the Firebase live release and served assets to the reviewed website commit. Do not deploy native binaries through static hosting.
 
 ## Product boundaries
 
