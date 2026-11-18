@@ -2,7 +2,7 @@
 
 ## Result
 
-The reviewed Pencil website is published at https://lazo-pencil-site.web.app/ in the dedicated Firebase project `lazo-pencil-site`. Custom-domain migration for `pencil.lazo.tools` is in progress; the Render CNAME remains in place until Firebase can serve valid HTTPS.
+The reviewed Pencil website is published at https://lazo-pencil-site.web.app/ in the dedicated Firebase project `lazo-pencil-site`. Custom-domain migration for `pencil.lazo.tools` is in progress; the site remains on Render through a temporary literal A record until Firebase can serve valid HTTPS.
 
 ## Supporting evidence
 
@@ -32,7 +32,11 @@ The website necessarily serves its HTML, CSS and browser JavaScript to visitors.
 
 ## Validation
 
-All 30 preview files matched local bytes. Local HTML/CSS asset references resolve in the staged publish tree. Requests for `.env`, `.git/config`, `README.md`, `firebase.json`, and the historical public installer ZIP return 404. Browser checks confirmed landing page content, interactive sample answers and source details, and navigation into the browser demo and its knowledge view; no browser errors/warnings were captured during those checks.
+All 30 preview files and all 30 production files matched local bytes. Local HTML/CSS asset references resolve in the staged publish tree. Requests for `.env`, `.git/config`, `README.md`, `firebase.json`, and the historical public installer ZIP return 404. Browser checks confirmed landing page content, interactive sample answers and source details, and navigation into the browser demo and its knowledge view; no browser errors/warnings were captured during those checks. The live Firebase signup CTA opened the existing account signup form correctly.
+
+## DNS preparation
+
+Firebase initially reported `DNS_CNAME_LIVE_MIGRATION`: an existing CNAME prevents advance ownership verification. The Render load-balancer address `216.24.57.1` was verified with valid HTTPS and an exact landing-page byte match before temporarily replacing the Pencil CNAME with that A record (TTL 60 seconds). Only Pencil-related DNS records were changed. A TXT record at `pencil.lazo.tools` with `hosting-site=lazo-pencil-site` and Firebase's DNS ACME challenge under `_acme-challenge.pencil.lazo.tools` were added. The hostname continued returning HTTP 200 through Render during preparation. Firebase must finish certificate validation before the final A-record cutover.
 
 ## Next actions and operating runbook
 
@@ -44,7 +48,7 @@ All 30 preview files matched local bytes. Local HTML/CSS asset references resolv
 
 ## Rollback
 
-Before cutover, the prior DNS record is `pencil` CNAME `pencil-lazo.onrender.com`, TTL 60 seconds. The existing Render static service `srv-dbmvss3ncjis73alktvg` is retained. If custom-domain HTTPS or content fails, restore that exact CNAME and verify HTTPS from the original provider. Do not delete or alter other Lazo DNS records. For a later website-only regression, use the Firebase Hosting release history to roll back to a previously verified version; confirm the live file hashes afterward.
+Before cutover, the prior DNS record is `pencil` CNAME `pencil-lazo.onrender.com`, TTL 60 seconds. The existing Render static service `srv-dbmvss3ncjis73alktvg` is retained. If custom-domain HTTPS or content fails, remove the Pencil ownership TXT if necessary to restore that exact CNAME (CNAME cannot coexist with a TXT at the same hostname), then verify HTTPS from the original provider. Do not delete or alter other Lazo DNS records. For a later website-only regression, use the Firebase Hosting release history to roll back to a previously verified version; confirm the live file hashes afterward.
 
 ## References
 
