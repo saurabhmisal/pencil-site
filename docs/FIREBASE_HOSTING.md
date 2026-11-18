@@ -2,7 +2,7 @@
 
 ## Result
 
-The reviewed Pencil website is published at https://lazo-pencil-site.web.app/ in the dedicated Firebase project `lazo-pencil-site`. Custom-domain migration for `pencil.lazo.tools` is in progress; the site remains on Render through a temporary literal A record until Firebase can serve valid HTTPS.
+The reviewed Pencil website is published at https://lazo-pencil-site.web.app/ in the dedicated Firebase project `lazo-pencil-site`. The custom-domain migration for `pencil.lazo.tools` completed later on 18 November 2026. Firebase now serves the domain with a verified certificate. See the completion record below.
 
 ## Supporting evidence
 
@@ -28,7 +28,7 @@ The website necessarily serves its HTML, CSS and browser JavaScript to visitors.
 - [x] Browser demo, assets, legal notices and download instructions included.
 - [x] Protected download URL retained.
 - [x] Preview and production deployment logs confirm success.
-- [ ] Custom-domain certificate and DNS cutover verified. Firebase certificate processing is the remaining gate; do not cut over while certificate hostname verification fails.
+- [x] Custom-domain certificate and DNS cutover verified. Certificate trust and hostname validation passed before switching traffic.
 
 ## Validation
 
@@ -60,3 +60,9 @@ At 2026-11-18 07:23 UTC, Firebase reported the preparation step as `PROCESSING`,
 - https://firebase.google.com/docs/hosting/custom-domain
 - https://firebase.google.com/docs/hosting/full-config
 - https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites.customDomains
+
+## Completion record · 18 November 2026
+
+The updated walkthrough site at UI commit `63c6fd93fb800ddf2277a8dba0611978db92f341` was deployed to the existing Spark Firebase project. Certificate validation against Firebase succeeded, then only the `pencil` A record changed from `216.24.57.1` to `199.36.158.100`, retaining TTL 60 seconds, the ownership TXT and ACME challenge. Firebase reports HOST_ACTIVE, OWNERSHIP_ACTIVE and CERT_ACTIVE. The normal custom-domain response matches the reviewed HTML exactly and its trusted certificate expires 16 February 2027. The existing Render service is retained as a fallback and was not removed or upgraded.
+
+The updated allowlisted deployment contains 33 files, 2,140,628 bytes. Its manifest SHA-256 is `896039afa6c0a0e216fcefcbd05c8f6a4eb3a2981787aeb5fa511c91561a0dbf`. The offered native installer and account backend remain unchanged.
