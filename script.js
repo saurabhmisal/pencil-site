@@ -1,7 +1,8 @@
 const screens={
- capture:{description:'Keep a note close to your tasks and current project.',alt:'Pencil browser demo: Today view with tasks, a note field and the current project.'},
- context:{description:'Follow a decision back to its notes and supporting sources.',alt:'Pencil browser demo: Atlas launch knowledge page with decisions and links to source notes.'},
- 'next-step':{description:'Bring the commitments in your notes into a task list.',alt:'Pencil browser demo: tasks from the Atlas launch meeting notes.'}
+ dashboard:{description:'See what needs you, what’s next and where you left off.',alt:'Pencil Studio dashboard with tasks, recent conversations and upcoming commitments in a sample workspace.'},
+ calendar:{description:'Make room for focused work alongside the rest of your day.',alt:'Pencil Studio calendar showing sample meetings, focus sessions and an agenda.'},
+ journal:{description:'Keep a daily thread of thoughts, progress and open loops.',alt:'Pencil Studio daily journal with sample entries and a daily recap.'},
+ context:{description:'Return to the notes and decisions behind your next step.',alt:'Pencil Studio connected context with source-linked notes and decisions in a sample workspace.'}
 };
 const tabs=[...document.querySelectorAll('[data-screen]')];
 function select(tab){
@@ -19,9 +20,4 @@ for(const [index,tab] of tabs.entries()){
   event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
   select(tabs[next]);tabs[next].focus();
  });
-}
-
-// Opening the linked development disclosure is a normal navigation action.
-for (const link of document.querySelectorAll('a[href="#next"]')) {
- link.addEventListener('click',()=>{const details=document.querySelector('#next details');if(details)details.open=true;});
 }

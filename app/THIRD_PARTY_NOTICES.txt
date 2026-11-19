@@ -1,4 +1,4 @@
-Pencil local edition 0.6.0
+Pencil browser demos
 
 Runtime libraries are bundled and transpiled for offline execution. Their licenses and original attribution notices are retained below and in the licenses folder. Component/runtime provenance is recorded in vendor/provenance.json in the source package.
 
@@ -1682,3 +1682,7 @@ react-dom/cjs/react-dom-client.production.js:
    * LICENSE file in the root directory of this source tree.
    *)
 */
+
+Pencil Studio browser demo (0.9.3 source). Uses the released frontend and an isolated in-memory sample adapter. React, Lucide, Radix, CVA, clsx, tailwind-merge and Inter notices remain in app/licenses/. No desktop backend, native runtime, credentials or private installer is included.
+
+Studio demo fonts: Inter and Source Sans 3, SIL Open Font License 1.1. Full notices: licenses/Inter-OFL.txt and licenses/SourceSans3-OFL.txt.

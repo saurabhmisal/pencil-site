@@ -13,7 +13,7 @@ ROOT_FILES = {
     "brand-type.css", "brand-theme.css", "app-brand.css", "family-consent.css", "release.json",
 }
 ASSET_EXTENSIONS = {".woff2", ".woff", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".ico"}
-APP_NOTICES = {"app/THIRD_PARTY_NOTICES.txt", "app/index.html"}
+APP_NOTICES = {"app/THIRD_PARTY_NOTICES.txt", "app/index.html", "app/legacy.html"}
 
 def allowed(name):
     parts = Path(name).parts

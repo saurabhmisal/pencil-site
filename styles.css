@@ -5,3 +5,27 @@ html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var
 .next-preview{padding-block:40px 48px;border-top:1px solid var(--brand-line);scroll-margin-top:24px}.next-preview .section-heading{margin-bottom:12px}.development-details{border-block:1px solid var(--brand-line)}.development-details>summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;min-height:60px;cursor:pointer;list-style:none;font-size:17px;font-weight:550}.development-details>summary::-webkit-details-marker{display:none}.development-sign{font-size:24px;line-height:1;color:var(--brand-green)}.development-details[open] .development-sign{transform:rotate(45deg)}.development-list{margin:0}.development-list>div{display:grid;grid-template-columns:minmax(140px,.4fr) minmax(0,1fr);gap:24px;padding:18px 0;border-top:1px solid var(--brand-line)}.development-list dt{font-size:17px;font-weight:550}.development-list dd{margin:0;font-size:16px;line-height:1.7;color:var(--brand-muted)}.development-status{font-size:14px;line-height:1.7;color:var(--brand-muted);padding:16px 0 20px;margin:0;max-width:85ch}.header nav{gap:20px}.hero-note>div.note-next-step{padding-top:18px}.hero-note>div.note-next-step p{margin-bottom:8px}
 @media(max-width:850px){.header nav a:last-child{display:none}.header nav{gap:18px}}
 @media(max-width:600px){.next-preview{padding-block:32px 36px}.development-list>div{grid-template-columns:1fr;gap:4px;padding-block:16px}.development-details>summary{font-size:16px}.hero-note .note-next-step>p{font-size:18px}}
+
+/* Studio preview: the page retains Lazo's Commissioner/ivory/green identity;
+   authentic app screens and the interactive demo use Pencil Studio tokens. */
+.hero-note{transform:none;border-radius:16px;box-shadow:0 12px 40px #172b4d06}
+.screen-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.screen-tabs button{min-height:68px;gap:12px;background:var(--brand-panel);border-color:var(--brand-line);transition:background .16s ease,border-color .16s ease}
+.screen-tabs button:hover{border-color:var(--brand-muted)}
+.screen-tabs button[aria-selected=true]{background:#fff2ea;border-color:#bc6a3d;color:#8e4726}
+.screen-tabs button[aria-selected=true] span{color:var(--brand-text)}
+#screen-image{aspect-ratio:1280/900;background:#f4f6f7;box-shadow:0 16px 48px #172b4d08;border-radius:16px}
+.preview-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-top:18px}
+.preview-bottom .preview-note{margin:0;max-width:60ch}
+.preview-bottom .text-link{flex-shrink:0}
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;margin:0}
+.feature-grid>div{padding:24px 0 28px;border-top:1px solid var(--brand-line);min-width:0}
+.feature-grid dt{display:flex;align-items:baseline;gap:14px;font-size:19px;line-height:1.4;font-weight:600;margin:0 0 12px}
+.feature-index{font-size:13px;line-height:1;letter-spacing:.05em;color:var(--brand-green);font-weight:600}
+.feature-grid dd{font-size:16px;line-height:1.7;color:var(--brand-muted);margin:0;max-width:48ch}
+.next-preview{padding-block:48px 56px;border-top:1px solid var(--brand-line)}
+.development-status{font-size:14px;line-height:1.7;color:var(--brand-muted);max-width:82ch;margin:16px 0 0}
+@media(max-width:760px){.screen-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.screen-tabs button{display:flex;padding:12px 14px;min-height:58px}.screen-tabs button span{margin:0;font-size:15px}.feature-grid{column-gap:28px}.feature-grid dt{font-size:18px}}
+@media(max-width:480px){.feature-grid{grid-template-columns:1fr}.feature-grid>div{padding-block:20px}.next-preview{padding-block:36px 40px}.preview-bottom{gap:8px}#screen-panel>p{min-height:3.3em}.screen-tabs button{gap:8px;padding:10px}.screen-tabs button span{font-size:14px}#screen-image{border-radius:9px}}
+@media(prefers-reduced-motion:reduce){.screen-tabs button{transition:none}}
+.brand img{padding:5px;background:#ef7841;border-radius:11px}
