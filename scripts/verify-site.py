@@ -38,14 +38,17 @@ for name in ('capture', 'context', 'next-step'):
     assert (root / 'assets/screenshots' / f'{name}.jpg').stat().st_size > 10000
 print('Verified local links, screenshot assets, release identity and signup gate.')
 
-# Every on-page navigation target resolves, including the development preview.
+# Every on-page navigation target resolves, including the current preview details.
 assert all(target in page.ids for target in page.anchors)
 next_section = html.split('id="next"', 1)[1].split('</section>', 1)[0]
 assert '<details' in next_section and '<details open' not in next_section
-assert 'IN DEVELOPMENT' in next_section
-for label in ('Dashboard', 'Calendar', 'Journal', 'Conversations &amp; memory', 'Desktop updates'):
+assert 'IN THE LATEST PREVIEW' in next_section
+for label in ('Dashboard', 'Calendar', 'Journal', 'Conversations &amp; memory'):
     assert f'<dt>{label}</dt>' in next_section
-assert 'current download remains unchanged' in next_section
-assert 'update delivery is not active' in next_section
+assert 'unsigned preview' in next_section
+assert 'local model' in next_section
+assert 'Choose shared-memory storage' in next_section
+assert 'current download remains unchanged' not in html
 assert not any(term in html for term in ('0.9.4 available', 'Download 0.9', 'Developer ID signed', 'notarized app'))
-print('Verified development/release separation and navigation targets.')
+assert release['developerIDSigned'] is False
+print('Verified unsigned release wording and navigation targets.')
