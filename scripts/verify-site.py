@@ -8,8 +8,15 @@ root = Path(__file__).resolve().parents[1]
 class Page(HTMLParser):
     links = []
     images = []
+    ids = set()
+    anchors = []
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
+        if values.get('id'):
+            assert values['id'] not in self.ids, 'Duplicate page ID'
+            self.ids.add(values['id'])
+        if tag == 'a' and values.get('href', '').startswith('#'):
+            self.anchors.append(values['href'][1:])
         for key in ('href', 'src'):
             if values.get(key): self.links.append(values[key])
         if tag == 'img': self.images.append(values)
@@ -30,3 +37,15 @@ assert 'Everyday' not in html and 'Saurabh' not in html
 for name in ('capture', 'context', 'next-step'):
     assert (root / 'assets/screenshots' / f'{name}.jpg').stat().st_size > 10000
 print('Verified local links, screenshot assets, release identity and signup gate.')
+
+# Every on-page navigation target resolves, including the development preview.
+assert all(target in page.ids for target in page.anchors)
+next_section = html.split('id="next"', 1)[1].split('</section>', 1)[0]
+assert '<details' in next_section and '<details open' not in next_section
+assert 'IN DEVELOPMENT' in next_section
+for label in ('Dashboard', 'Calendar', 'Journal', 'Conversations &amp; memory', 'Desktop updates'):
+    assert f'<dt>{label}</dt>' in next_section
+assert 'current download remains unchanged' in next_section
+assert 'update delivery is not active' in next_section
+assert not any(term in html for term in ('0.9.4 available', 'Download 0.9', 'Developer ID signed', 'notarized app'))
+print('Verified development/release separation and navigation targets.')

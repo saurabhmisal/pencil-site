@@ -20,3 +20,8 @@ for(const [index,tab] of tabs.entries()){
   select(tabs[next]);tabs[next].focus();
  });
 }
+
+// Opening the linked development disclosure is a normal navigation action.
+for (const link of document.querySelectorAll('a[href="#next"]')) {
+ link.addEventListener('click',()=>{const details=document.querySelector('#next details');if(details)details.open=true;});
+}
